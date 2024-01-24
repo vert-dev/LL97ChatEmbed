@@ -43,6 +43,15 @@ export const BotBubble = (props: Props) => {
   onMount(() => {
     if (botMessageEl) {
       botMessageEl.innerHTML = Marked.parse(props.message);
+      const aTags = botMessageEl.querySelectorAll('a');
+      const strongTags = botMessageEl.querySelectorAll('strong');
+      aTags.forEach((aTag) => {
+        aTag.style.color = 'white';
+      });
+      strongTags.forEach((strongTag) => {
+        strongTag.style.color = 'white';
+      });
+      
       if (props.fileAnnotations && props.fileAnnotations.length) {
         for (const annotations of props.fileAnnotations) {
           const button = document.createElement('button');
